@@ -12,6 +12,7 @@
 #import "BFTask+LoadHtmlPackage.h"
 #import "BFTask+LoadLessonContent.h"
 #import "BFExecutor.h"
+#import "BFTaskCompletionSource.h"
 #import "LoginOperation.h"
 #import "LoadConfigOperation.h"
 #import "LoadHtmlPackageOperation.h"
@@ -45,9 +46,12 @@
     [weakStartTasksBtn setUserInteractionEnabled:NO];
     [weakStartTasksBtn setTitle:@"Processing" forState:UIControlStateNormal];
 
+
     BFTask *taskInstance= [[BFTask alloc] init];
     
-    [[[[[taskInstance loginAsync] continueWithExecutor:[BFExecutor mainThreadExecutor] withBlock:^id(BFTask *task) {
+    BFTaskCompletionSource *login = [BFTaskCompletionSource taskCompletionSource];
+
+    [[[[login.task continueWithExecutor:[BFExecutor mainThreadExecutor] withBlock:^id(BFTask *task) {
 
         weakProgressLabel.text = task.result;
         return [taskInstance loadConfigAsync];
@@ -72,6 +76,11 @@
         [weakStartTasksBtn setTitle:@"Start Again" forState:UIControlStateNormal];
         return nil;
 
+    }];
+    
+    [[taskInstance loginAsync] continueWithBlock:^id(BFTask *task) {
+        [login setResult:task.result];
+        return nil;
     }];
 
 }
