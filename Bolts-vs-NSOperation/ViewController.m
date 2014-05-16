@@ -51,37 +51,41 @@
     
     BFTaskCompletionSource *login = [BFTaskCompletionSource taskCompletionSource];
 
+    [[taskInstance loginAsync] continueWithBlock:^id(BFTask *task) {
+        [login setResult:task.result];
+        return nil;
+    }];
+    
+    
+    
+    
     [[[[login.task continueWithExecutor:[BFExecutor mainThreadExecutor] withBlock:^id(BFTask *task) {
-
+        
         weakProgressLabel.text = task.result;
         return [taskInstance loadConfigAsync];
-
+        
     }] continueWithExecutor:[BFExecutor mainThreadExecutor] withBlock:^id(BFTask *task) {
-
+        
         weakProgressLabel.text = task.result;
         return nil;
-
+        
     }] continueWithBlock:^id(BFTask *task) {
-
+        
         NSMutableArray *tasks = [NSMutableArray array];
         [tasks addObject:[taskInstance loadHtmlPackage]];
         [tasks addObject:[taskInstance loadLessonContent]];
         return [BFTask taskForCompletionOfAllTasks:tasks];
-
+        
     }] continueWithExecutor:[BFExecutor mainThreadExecutor] withBlock:^id(BFTask *task) {
-
+        
         // If previous task completion with multiple tasks, "task.result" is always nil at here.
         weakProgressLabel.text = @"load html package and lesson content DONE!";
         [weakStartTasksBtn setUserInteractionEnabled:YES];
         [weakStartTasksBtn setTitle:@"Start Again" forState:UIControlStateNormal];
         return nil;
-
+        
     }];
     
-    [[taskInstance loginAsync] continueWithBlock:^id(BFTask *task) {
-        [login setResult:task.result];
-        return nil;
-    }];
 
 }
 

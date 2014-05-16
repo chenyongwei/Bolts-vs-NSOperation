@@ -39,7 +39,7 @@
 		854B39B718C72A5700F21D41 /* LoadLessonContentOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 854B39B518C72A5700F21D41 /* LoadLessonContentOperation.m */; };
 		854B39BA18C72C6400F21D41 /* DoneOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 854B39B918C72C6400F21D41 /* DoneOperation.m */; };
 		854B39BB18C72C6400F21D41 /* DoneOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 854B39B918C72C6400F21D41 /* DoneOperation.m */; };
-		D3D9FE3FBAAD4F5999037872 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C178C7CEF134772A467CA0F /* libPods.a */; };
+		85FB74FF18CE247E00F55350 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85FB74FE18CE247E00F55350 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +92,7 @@
 		854B39B518C72A5700F21D41 /* LoadLessonContentOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadLessonContentOperation.m; sourceTree = "<group>"; };
 		854B39B818C72C6400F21D41 /* DoneOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoneOperation.h; sourceTree = "<group>"; };
 		854B39B918C72C6400F21D41 /* DoneOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoneOperation.m; sourceTree = "<group>"; };
+		85FB74FE18CE247E00F55350 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +100,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85FB74FF18CE247E00F55350 /* libPods.a in Frameworks */,
 				854B397718C6EDD400F21D41 /* CoreGraphics.framework in Frameworks */,
 				854B397918C6EDD400F21D41 /* UIKit.framework in Frameworks */,
 				854B397518C6EDD400F21D41 /* Foundation.framework in Frameworks */,
-				D3D9FE3FBAAD4F5999037872 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +175,7 @@
 		854B397318C6EDD400F21D41 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				85FB74FE18CE247E00F55350 /* libPods.a */,
 				854B397418C6EDD400F21D41 /* Foundation.framework */,
 				854B397618C6EDD400F21D41 /* CoreGraphics.framework */,
 				854B397818C6EDD400F21D41 /* UIKit.framework */,
